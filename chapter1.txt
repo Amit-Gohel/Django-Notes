@@ -1,0 +1,38 @@
+---------------------------------------------  Coding Style  ---------------------------------------------
+
+Take those pesky abbreviated variable names, for example. 
+When you see a variable called balance sheet decrease, 
+it’s much easier to interpret in your mind than an abbreviated variable like bsd or bal_s_d. 
+These types of shortcuts may save a few seconds of typing, but 
+that savings comes at the expense of hours or days of technical debt. 
+It’s not worth it.
+
+        ==>     The Word on Imports     <==
+
+The import order here is:-
+1 Standard library imports.
+2 Imports from core Django.
+3 Imports from third-party apps.
+4 Imports from the apps that you created as part of your Django project.
+
+Example
+
+# Stdlib imports
+from math import sqrt
+from os.path import abspath
+# Core Django imports
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+# Third-party app imports
+from django_extensions.db.models import TimeStampedModel
+# Imports from your apps
+from splits.models import BananaSplit
+
+
+               Code                   ||    Import Type    ||                  Usage
+"from core.views import FoodMixin"    || absolute import   || Use when importing from outside the current app
+"from .models import WaffleCone"      || explicit relative || Use when importing from another module in the current app
+"from cones.models import WaffleCone" || implicit relative || Often used when importing from another module in the current app, but not a good idea
+
+
+
